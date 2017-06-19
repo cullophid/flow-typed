@@ -1,22 +1,12 @@
-sudo: false
 language: node_js
 node_js:
-  - '5.11'
-  - '6.1'
-compiler: clang-3.6
-env:
-  - CXX=clang-3.6
-addons:
-  apt:
-    sources:
-      #- llvm-toolchain-precise-3.6
-      - ubuntu-toolchain-r-test
-    packages:
-      - unzip
-      #- clang-3.6
-      - clang
-      - g++-4.8
-script: ./travis.sh
-cache:
-  directories:
-  - cli/.flow-bins-cache
+    - "4.2"
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/c75729ddc58d8813cc6d
+    on_success: always
+    on_failure: always
+    on_start: never
+after_script:
+  - npm run coveralls
